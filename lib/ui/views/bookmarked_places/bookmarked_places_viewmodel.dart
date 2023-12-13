@@ -5,9 +5,9 @@ import 'package:weather/app/app.router.dart';
 import 'package:weather/services/weather_service.dart';
 
 class BookmarkedPlacesViewModel extends BaseViewModel {
-  final weatherService = locator<WeatherService>();
+  final WeatherService weatherService = locator<WeatherService>();
   get getBookmarkedItemcount => weatherService.getBookmarkedItemcount;
-  final _navigationService = locator<NavigationService>();
+  final NavigationService _navigationService = locator<NavigationService>();
 
   void getWeatherForLocation({required String location}) {
     _navigationService.navigateToHomeView(location: location);

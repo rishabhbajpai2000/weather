@@ -25,7 +25,7 @@ class HomeView extends StackedView<HomeViewModel> {
               viewModel.weather == null
                   ? "Loading..."
                   : viewModel.weather!.location,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
             backgroundColor: Colors.black,
             actions: [
@@ -33,7 +33,7 @@ class HomeView extends StackedView<HomeViewModel> {
                   onPressed: () {
                     viewModel.showSearchBar(context: context);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.search,
                     color: Colors.white,
                   )),
@@ -41,7 +41,7 @@ class HomeView extends StackedView<HomeViewModel> {
                   onPressed: () {
                     viewModel.seeBookmarkedLocations();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.bookmark_outlined,
                     color: Colors.white,
                   ))
@@ -50,7 +50,7 @@ class HomeView extends StackedView<HomeViewModel> {
           body: Container(
             height: screenHeight(context),
             width: screenWidth(context),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Colors.black, Colors.blue],
                 begin: Alignment.topCenter,
@@ -58,7 +58,7 @@ class HomeView extends StackedView<HomeViewModel> {
               ),
             ),
             child: viewModel.weather == null
-                ? Center(
+                ? const Center(
                     child: CircularProgressIndicator(),
                   )
                 : Column(
@@ -67,16 +67,16 @@ class HomeView extends StackedView<HomeViewModel> {
                         Expanded(child: Container()),
                         Text(
                           viewModel.getDayAndDate(),
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: const TextStyle(color: Colors.white, fontSize: 20),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
                           viewModel.getTime(),
-                          style: TextStyle(color: Colors.white, fontSize: 40),
+                          style: const TextStyle(color: Colors.white, fontSize: 40),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         GestureDetector(
@@ -86,10 +86,10 @@ class HomeView extends StackedView<HomeViewModel> {
                           },
                           child: Text(
                             viewModel.weather!.location,
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            style: const TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         GestureDetector(
@@ -105,19 +105,19 @@ class HomeView extends StackedView<HomeViewModel> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
                           viewModel.weather!.temperature + "°C",
-                          style: TextStyle(color: Colors.white, fontSize: 80),
+                          style: const TextStyle(color: Colors.white, fontSize: 80),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
                           viewModel.getDay(),
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: const TextStyle(color: Colors.white, fontSize: 20),
                         ),
                         Expanded(child: Container())
                       ]),

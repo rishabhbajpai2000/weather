@@ -11,32 +11,37 @@ import 'package:weather/ui/views/MySearchDelegate.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final _weatherService = locator<WeatherService>();
+  final WeatherService _weatherService = locator<WeatherService>();
   Weather? weather;
   final _navigationService = locator<NavigationService>();
+  
+
   void fetchWeather(String city) async {
     weather = await _weatherService.fetchWeather(city);
     rebuildUi();
   }
-
+  // this will return Monday, Teusday, Wednesday etc from the local time of the weather object.
   String getDay() {
     return DateFormat('EEEE')
         .format(DateTime.parse(weather!.localTime))
         .toString();
   }
 
+  // this will return Tuesday, 12 December etc from the local time of the weather object.
   String getDayAndDate() {
     return DateFormat('EEEE, d MMMM')
         .format(DateTime.parse(weather!.localTime))
         .toString();
   }
 
+  // this will return 12:00 AM or 12:00 PM from the local time of the weather object.
   String getTime() {
     return DateFormat('h:mm a')
         .format(DateTime.parse(weather!.localTime))
         .toString();
   }
 
+  // this will return the weather icon from the weather object
   IconData? getWeatherIcon() {
     return weather?.getWeatherIcon();
   }

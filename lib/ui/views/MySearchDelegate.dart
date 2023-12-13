@@ -8,7 +8,7 @@ class MySearchDelegate extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
     IconButton(
-      icon: Icon(Icons.clear),
+      icon: const Icon(Icons.clear),
       onPressed: () {
         if (query.isEmpty) {
           close(context, '');
@@ -17,23 +17,25 @@ class MySearchDelegate extends SearchDelegate {
         }
       },
     );
+    return null;
   }
 
   @override
   Widget? buildLeading(BuildContext context) {
     IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         close(context, null);
       },
     );
+    return null;
   }
 
   @override
   Widget buildResults(BuildContext context) {
     return Text(
       query,
-      style: TextStyle(fontSize: 64, fontWeight: FontWeight.w200),
+      style: const TextStyle(fontSize: 64, fontWeight: FontWeight.w200),
     );
   }
 
@@ -66,7 +68,7 @@ class MySearchDelegate extends SearchDelegate {
               );
               _navigationService.replaceWithHomeView(location: query);
             },
-            leading: Icon(Icons.location_city),
+            leading: const Icon(Icons.location_city),
             title: Text(suggestion));
       },
       itemCount: suggestions.length,

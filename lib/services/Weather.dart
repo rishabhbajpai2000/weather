@@ -9,7 +9,7 @@ class Weather {
   String location;
   String weatherIconLink;
   String localTime;
-  int weather_code;
+  int weatherCode;
 
   Weather(
       {required this.timeEpoch,
@@ -19,7 +19,7 @@ class Weather {
       required this.location,
       required this.weatherIconLink,
       required this.localTime,
-      required this.weather_code});
+      required this.weatherCode});
 
   // this class can be made from a json object as well.
   factory Weather.fromJson(Map<String, dynamic> json) {
@@ -31,92 +31,65 @@ class Weather {
         location: json['location']['name'],
         weatherIconLink: json['current']['weather_icons'][0],
         localTime: json['location']['localtime'],
-        weather_code: json['current']['weather_code']);
+        weatherCode: json['current']['weather_code']);
   }
 
   // make a function that will be used with .toSting() to print the weather object.
   @override
   String toString() {
-    return 'Weather(time: $timeEpoch, \n temperature: $temperature, \n weatherConditions: $weatherConditions, \n windSpeed: $windSpeed, \n location: $location, \n weatherIconLink: $weatherIconLink \n localTime: $localTime \n weather_code: $weather_code) ';
+    return '''Weather(time: $timeEpoch, 
+              \n temperature: $temperature, 
+              \n weatherConditions: $weatherConditions, 
+              \n windSpeed: $windSpeed, 
+              \n location: $location, 
+              \n weatherIconLink: $weatherIconLink 
+              \n localTime: $localTime 
+              \n weather_code: $weatherCode)''';
   }
 
   IconData? getWeatherIcon() {
-    if (weather_code == 113) {
-      return WeatherIcons.day_sunny;
+    switch (weatherCode) {
+      case 113:
+        return WeatherIcons.day_sunny;
+      case 116:
+        return WeatherIcons.day_cloudy;
+      case 119:
+        return WeatherIcons.cloud;
+      case 122:
+        return WeatherIcons.cloudy;
+      case 143:
+        return WeatherIcons.fog;
+      case 176:
+        return WeatherIcons.rain;
+      case 179:
+      case 182:
+      case 185:
+        return WeatherIcons.sleet;
+      case 200:
+        return WeatherIcons.thunderstorm;
+      case 227:
+      case 230:
+        return WeatherIcons.snow;
+      case 248:
+      case 260:
+        return WeatherIcons.fog;
+      case 263:
+      case 266:
+      case 281:
+      case 284:
+        return WeatherIcons.rain;
+      case 293:
+      case 296:
+        return WeatherIcons.day_showers;
+      case 299:
+      case 302:
+      case 305:
+      case 308:
+        return WeatherIcons.day_rain;
+      case 311:
+        return WeatherIcons.rain;
+      default:
+        return WeatherIcons.day_sunny;
     }
-    if (weather_code == 116) {
-      return WeatherIcons.day_cloudy;
-    }
-    if (weather_code == 119) {
-      return WeatherIcons.cloud;
-    }
-    if (weather_code == 122) {
-      return WeatherIcons.cloudy;
-    }
-    if (weather_code == 143) {
-      return WeatherIcons.fog;
-    }
-    if (weather_code == 176) {
-      return WeatherIcons.rain;
-    }
-    if (weather_code == 179) {
-      return WeatherIcons.sleet;
-    }
-    if (weather_code == 182) {
-      return WeatherIcons.sleet;
-    }
-    if (weather_code == 185) {
-      return WeatherIcons.sleet;
-    }
-    if (weather_code == 200) {
-      return WeatherIcons.thunderstorm;
-    }
-    if (weather_code == 227) {
-      return WeatherIcons.snow;
-    }
-    if (weather_code == 230) {
-      return WeatherIcons.snow;
-    }
-    if (weather_code == 248) {
-      return WeatherIcons.fog;
-    }
-    if (weather_code == 260) {
-      return WeatherIcons.fog;
-    }
-    if (weather_code == 263) {
-      return WeatherIcons.rain;
-    }
-    if (weather_code == 266) {
-      return WeatherIcons.rain;
-    }
-    if (weather_code == 281) {
-      return WeatherIcons.rain;
-    }
-    if (weather_code == 284) {
-      return WeatherIcons.rain;
-    }
-    if (weather_code == 293) {
-      return WeatherIcons.day_showers;
-    }
-    if (weather_code == 296) {
-      return WeatherIcons.day_showers;
-    }
-    if (weather_code == 299) {
-      return WeatherIcons.day_rain;
-    }
-
-    if (weather_code == 302) {
-      return WeatherIcons.day_rain;
-    }
-    if (weather_code == 305) {
-      return WeatherIcons.day_rain;
-    }
-    if (weather_code == 308) {
-      return WeatherIcons.day_rain;
-    }
-    if (weather_code == 311) {
-      return WeatherIcons.rain;
-    }
-    return WeatherIcons.day_sunny;
   }
 }

@@ -684,6 +684,23 @@ class MockDialogService extends _i1.Mock implements _i3.DialogService {
 /// See the documentation for Mockito's code generation for more information.
 class MockWeatherService extends _i1.Mock implements _i8.WeatherService {
   @override
+  List<String> get bookMarkedLocations => (super.noSuchMethod(
+        Invocation.getter(#bookMarkedLocations),
+        returnValue: <String>[],
+        returnValueForMissingStub: <String>[],
+      ) as List<String>);
+
+  @override
+  set bookMarkedLocations(List<String>? _bookMarkedLocations) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #bookMarkedLocations,
+          _bookMarkedLocations,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
   _i6.Future<_i2.Weather> fetchWeather(String? location) => (super.noSuchMethod(
         Invocation.method(
           #fetchWeather,
@@ -704,4 +721,14 @@ class MockWeatherService extends _i1.Mock implements _i8.WeatherService {
           ),
         )),
       ) as _i6.Future<_i2.Weather>);
+
+  @override
+  void addToBookMark({required String? location}) => super.noSuchMethod(
+        Invocation.method(
+          #addToBookMark,
+          [],
+          {#location: location},
+        ),
+        returnValueForMissingStub: null,
+      );
 }
